@@ -2,7 +2,8 @@
 
 *Note: This project is in initial development and not currently functional.*
 
-This is a C++ utility to find finite matrix groups over certain number fields.
+This is a C++ utility to find [finite matrix groups](https://en.wikipedia.org/wiki/Matrix_group)
+over certain [number fields](https://en.wikipedia.org/wiki/Algebraic_number_field).
 The subgroups considered fall within `GL(n, C)`, where `GL` represents the 
 [general linear group](https://en.wikipedia.org/wiki/General_linear_group) and
 `C` represents the complex numbers. Further improvements will support restricting

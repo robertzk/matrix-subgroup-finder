@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include "complex.hpp"
 
+#define abs(x) ((x)<0 ? -(x) : (x))
+
 Complex mkcomplex(double re, double im) {
   Complex c;
   c.re = re;
@@ -30,6 +32,10 @@ void addcomplex2(Complex &a, Complex b) {
 
 Complex multcomplex(Complex a, Complex b) {
   return mkcomplex(a.re * b.re - a.im * b.im, a.re * b.im + a.im * b.re);
+}
+
+bool eqcomplex(Complex a, Complex b) {
+  return abs(a.re - b.re) < 0.00000000001 && abs(a.im - b.im) < 0.00000000001;
 }
 
 

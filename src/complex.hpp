@@ -11,6 +11,7 @@ char* strcomplex(Complex c);
 Complex addcomplex(Complex a, Complex b);
 void addcomplex2(Complex &a, Complex b);
 Complex multcomplex(Complex a, Complex b);
+bool eqcomplex(Complex a, Complex b);
 
 #endif
 

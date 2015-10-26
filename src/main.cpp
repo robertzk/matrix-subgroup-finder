@@ -58,6 +58,9 @@ int main(int argc, char** argv) {
   x->entries[3][3] = multcomplex(w, w);
   x->print("x");
   ((*x) * (*x) * (*x)).print("x ^ 3");
+  if (identity == (*x) * (*x) * (*x)) {
+    std::cout << "\n\n\033[32mIt is true that x = x^3\033[39m\n\n";
+  }
 
   return 0;
 }

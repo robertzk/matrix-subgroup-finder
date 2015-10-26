@@ -64,6 +64,11 @@ public:
   friend GeneralLinear operator^(GeneralLinear a, unsigned int n);
 
   /**
+   * Test two matrices for entry-wise equality.
+   */
+  friend bool operator==(GeneralLinear a, GeneralLinear b);
+
+  /**
    * Create entries for an identity matrix of a given size.
    *
    * @param size The size of the matrix.

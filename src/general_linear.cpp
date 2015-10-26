@@ -93,6 +93,27 @@ GeneralLinear operator^(GeneralLinear a, unsigned int n) {
 }
 
 /**
+ * Test two matrices for entry-wise equality.
+ */
+bool operator==(GeneralLinear a, GeneralLinear b) {
+  if (a.size != b.size) {
+    return false;
+  }
+
+  for (unsigned int i = 0; i < a.size; i++) {
+    for (unsigned int j = 0; j < a.size; j++) {
+      if (!eqcomplex(a.entries[i][j], b.entries[i][j])) {
+        // std::cout << "Comparing " << strcomplex(a.entries[i][j]) 
+        //          << ", " << strcomplex(b.entries[i][j]) << ": "
+        //          << (eqcomplex(a.entries[i][j], b.entries[i][j]) ? "true" : "false") << "\n";
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+/**
  * Create entries for an identity matrix of a given size.
  *
  * @param size The size of the matrix.

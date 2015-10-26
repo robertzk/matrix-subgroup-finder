@@ -64,6 +64,11 @@ public:
    * Multiply two matrices.
    */
   friend GeneralLinear operator*(GeneralLinear a, GeneralLinear b);
+
+  /**
+   * Raise a matrix to some integer power.
+   */
+  friend GeneralLinear operator^(GeneralLinear a, unsigned int n);
 };
 
 #endif

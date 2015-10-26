@@ -38,6 +38,16 @@ GeneralLinear::GeneralLinear(GeneralLinear *matrix) {
  * Multiply two matrices and store the results in the former matrix.
  */
 GeneralLinear operator*(GeneralLinear a, GeneralLinear b) {
+  a.entries[0][0] = mkcomplex(0.0, 0.0);
+  return a;
+}
+
+
+/**
+ * Raise a matrix to some integer power.
+ */
+GeneralLinear operator^(GeneralLinear a, unsigned int n) {
+  a.entries[0][0] = mkcomplex(0.0, (double)n);
   return a;
 }
 

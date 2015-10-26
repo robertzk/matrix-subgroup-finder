@@ -24,6 +24,14 @@ public:
   GeneralLinear(const unsigned int _size = 4);
 
   /**
+   * Copy constructor for `GeneralLinear` matrices.
+   *
+   * @param matrix The template matrix.
+   * @return A GeneralLinear matrix that is a copy of `matrix`.
+   */
+  GeneralLinear(GeneralLinear *matrix);
+
+  /**
    * Construct a matrix from a 2-array of `entries`.
    * 
    * @param _size The size of the square matrix.
@@ -51,6 +59,11 @@ public:
       stream << std::endl;
     }
   }
+
+  /**
+   * Multiply two matrices.
+   */
+  friend GeneralLinear operator*(GeneralLinear a, GeneralLinear b);
 };
 
 #endif

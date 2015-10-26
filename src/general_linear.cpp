@@ -35,9 +35,31 @@ GeneralLinear::GeneralLinear(GeneralLinear *matrix) {
 }
 
 /**
+ * Print the matrix with each entry separated by two spaces.
+ * @param stream An output stream, usually `std::cout`.
+ * @param annotation An optional string annotation (name of the matrix).
+ */
+void GeneralLinear::print(std::ostream &stream, char* annotation) const {
+  stream << "Matrix " << (annotation == NULL ? "" : annotation)
+         << " (size " << this->size << " x " << this->size << ")\n" << std::endl;
+
+  for (unsigned int i = 0; i < this->size; i++) {
+    for (unsigned int j = 0; j < this->size; j++) {
+      stream << strcomplex(this->entries[i][j]) << "  ";
+    }
+    stream << std::endl;
+  }
+}
+
+/**
  * Multiply two matrices and store the results in the former matrix.
  */
 GeneralLinear operator*(GeneralLinear a, GeneralLinear b) {
+  if (a.size != b.size) {
+    throw "Matrix sizes must be equal to multiply.";
+  }
+
+  Complex **new_entries = GeneralLinear::identity_matrix(a.size);
   a.entries[0][0] = mkcomplex(0.0, 0.0);
   return a;
 }
@@ -47,10 +69,21 @@ GeneralLinear operator*(GeneralLinear a, GeneralLinear b) {
  * Raise a matrix to some integer power.
  */
 GeneralLinear operator^(GeneralLinear a, unsigned int n) {
+  if (n == 0) {
+    a.entries = GeneralLinear::identity_matrix(a.size);
+    return a;
+  }
+
   a.entries[0][0] = mkcomplex(0.0, (double)n);
   return a;
 }
 
+/**
+ * Create entries for an identity matrix of a given size.
+ *
+ * @param size The size of the matrix.
+ * @return The identity matrix of size `size`.
+ */
 Complex** GeneralLinear::identity_matrix(unsigned int size) {
   Complex **entries = (Complex**)malloc(size * sizeof(Complex*));
 

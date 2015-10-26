@@ -7,6 +7,7 @@ struct Complex {
 };
 
 Complex mkcomplex(double re, double im);
+char* strcomplex(Complex c);
 
 #endif
 

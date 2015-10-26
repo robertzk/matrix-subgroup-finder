@@ -27,3 +27,5 @@
 *.out
 *.app
 matrix_subgroup_finder
+test.c
+a.out

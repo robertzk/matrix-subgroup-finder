@@ -31,7 +31,7 @@ public:
    *    the second column of the first row (i.e., column-rowwise).
    * @return A GeneralLinear matrix with coefficients given by `entries`.
    */
-  GeneralLinear(const unsigned int _size, const Complex **_entries): entries(_entries), size(_size) { };
+  GeneralLinear(const unsigned int _size, Complex **_entries): entries(_entries), size(_size) { };
 
   /**
    * Clean up the matrix.
@@ -42,7 +42,7 @@ public:
    * Print the matrix with each entry separated by two spaces.
    * @param stream An output stream, usually `std::cout`.
    */
-  void print(const std::ostream &stream) const {
+  void print(std::ostream &stream) const {
     stream << "Matrix of size " << this->size << " x " << this->size << std::endl;
     for (unsigned int i = 0; i < this->size; i++) {
       for (unsigned int j = 0; j < this->size; j++) {

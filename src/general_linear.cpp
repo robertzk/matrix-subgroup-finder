@@ -66,9 +66,7 @@ GeneralLinear operator*(GeneralLinear a, GeneralLinear b) {
     for (unsigned int j = 0; j < n; j++) {
       Complex new_entry = mkcomplex(0.0, 0.0);
       for (unsigned int k = 0; k < n; k++) {
-        for (unsigned int h = 0; h < n; h++) {
-          addcomplex2(new_entry, mkcomplex(0.0, 0.0)); //multcomplex(
-        }
+        addcomplex2(new_entry, multcomplex(a.entries[i][k], b.entries[k][j]));
       }
       new_entries[i][j] = new_entry;
     }

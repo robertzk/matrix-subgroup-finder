@@ -1,4 +1,4 @@
-## Find finite subgroups of matrix groups
+## Find finite subgroups of matrix groups ![travis](https://api.travis-ci.org/robertzk/matrix-subgroup-finder.svg)
 
 *Note: This project is in initial development and not currently functional.*
 

@@ -4,7 +4,7 @@
 /**
  * Construct an identity matrix.
  */
-GeneralLinear::GeneralLinear(unsigned int _size) : size(_size) {
+GeneralLinear::GeneralLinear(const unsigned int _size) : size(_size) {
   this->entries = (Complex**)malloc(_size * sizeof(Complex*));
 
   for (unsigned int i = 0; i < _size; i++) {

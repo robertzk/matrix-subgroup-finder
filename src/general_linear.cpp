@@ -39,15 +39,15 @@ GeneralLinear::GeneralLinear(GeneralLinear *matrix) {
  * @param stream An output stream, usually `std::cout`.
  * @param annotation An optional string annotation (name of the matrix).
  */
-void GeneralLinear::print(std::ostream &stream, char* annotation) const {
-  stream << "Matrix " << (annotation == NULL ? "" : annotation)
-         << " (size " << this->size << " x " << this->size << ")\n" << std::endl;
+void GeneralLinear::print(char* annotation, std::ostream *stream) const {
+  (*stream) << "\nMatrix " << (annotation == NULL ? "" : annotation)
+            << " (size " << this->size << " x " << this->size << ")" << std::endl;
 
   for (unsigned int i = 0; i < this->size; i++) {
     for (unsigned int j = 0; j < this->size; j++) {
-      stream << strcomplex(this->entries[i][j]) << "  ";
+      (*stream) << strcomplex(this->entries[i][j]) << "  ";
     }
-    stream << std::endl;
+    (*stream) << std::endl;
   }
 }
 

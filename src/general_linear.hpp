@@ -51,7 +51,7 @@ public:
    * @param stream An output stream, usually `std::cout`.
    * @param annotation An optional string annotation (name of the matrix).
    */
-  void print(std::ostream &stream, char* annotation = NULL) const;
+  void print(char* annotation = NULL, std::ostream *stream = &std::cout) const;
 
   /**
    * Multiply two matrices.
@@ -73,7 +73,6 @@ public:
 };
 
 typedef GeneralLinear GL;
-
 
 #endif
 

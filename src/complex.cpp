@@ -11,7 +11,11 @@ Complex mkcomplex(double re, double im) {
 
 char* strcomplex(Complex c) {
   char* buf = (char*)malloc(30 * sizeof(char));
-  snprintf(buf, 30, "%0.10f + %0.10fi", c.re, c.im);
+  if (c.im >= 0) {
+    snprintf(buf, 30, "%0.10f + %0.10fi", c.re, c.im);
+  } else {
+    snprintf(buf, 30, "%0.10f - %0.10fi", c.re, -c.im);
+  }
   return buf;
 }
 

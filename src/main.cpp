@@ -1,6 +1,6 @@
 #include <iostream>
+#include <math.h>
 #include "general_linear.hpp"
-
 
 int main(int argc, char** argv) {
   GeneralLinear *identity = new GeneralLinear(4u);
@@ -49,6 +49,14 @@ int main(int argc, char** argv) {
   c->print(std::cout, "c");
 
   ((*b) * (*c)).print(std::cout, "b * c");
+
+  // w := (-1 + i * 3^(1/2)) / 2;
+  Complex w = mkcomplex(-0.5, 0.5 * sqrt(3.0));
+  // x := GL4 ! [ 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, w, 0, 0, 0, 0, w^2 ];
+  GL *x = new GL(4u);
+  x->entries[2][2] = w;
+  x->entries[3][3] = multcomplex(w, w);
+  x->print(std::cout, "x");
 
   return 0;
 }

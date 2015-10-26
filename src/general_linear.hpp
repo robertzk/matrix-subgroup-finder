@@ -72,6 +72,8 @@ public:
   static Complex** identity_matrix(unsigned int size);
 };
 
+typedef GeneralLinear GL;
+
 
 #endif
 

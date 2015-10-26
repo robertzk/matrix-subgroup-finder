@@ -87,7 +87,7 @@ GeneralLinear operator^(GeneralLinear a, unsigned int n) {
     return a;
   } else {
     GeneralLinear *a_ = new GeneralLinear(&a);
-    for (unsigned int i = 0; i < n; i++, a = a * (*a_));
+    for (unsigned int i = 1; i < n; i++, a = a * (*a_));
     return a;
   }
 }

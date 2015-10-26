@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include "general_linear.hpp"
 
-
-
 /**
  * Construct an identity matrix.
  */

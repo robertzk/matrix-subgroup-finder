@@ -49,9 +49,12 @@ public:
   /**
    * Print the matrix with each entry separated by two spaces.
    * @param stream An output stream, usually `std::cout`.
+   * @param annotation An optional string annotation (name of the matrix).
    */
-  void print(std::ostream &stream) const {
-    stream << "Matrix of size " << this->size << " x " << this->size << std::endl;
+  void print(std::ostream &stream, char* annotation = NULL) const {
+    stream << "Matrix " << (annotation == NULL ? "" : annotation)
+           << " (size " << this->size << " x " << this->size << ")\n" << std::endl;
+
     for (unsigned int i = 0; i < this->size; i++) {
       for (unsigned int j = 0; j < this->size; j++) {
         stream << strcomplex(this->entries[i][j]) << "  ";

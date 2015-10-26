@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "general_linear.hpp"
 
+
+
 /**
  * Construct an identity matrix.
  */
@@ -49,5 +51,18 @@ GeneralLinear operator*(GeneralLinear a, GeneralLinear b) {
 GeneralLinear operator^(GeneralLinear a, unsigned int n) {
   a.entries[0][0] = mkcomplex(0.0, (double)n);
   return a;
+}
+
+Complex** GeneralLinear::identity_matrix(unsigned int size) {
+  Complex **entries = (Complex**)malloc(size * sizeof(Complex*));
+
+  for (unsigned int i = 0; i < size; i++) {
+    entries[i] = (Complex*)malloc(size * sizeof(Complex));
+    for (unsigned int j = 0; j < size; j++) {
+      entries[i][j] = (i == j ? mkcomplex(1.0, 0.0) : mkcomplex(0.0, 0.0));
+    }
+  }
+
+  return entries;
 }
 

@@ -69,7 +69,16 @@ public:
    * Raise a matrix to some integer power.
    */
   friend GeneralLinear operator^(GeneralLinear a, unsigned int n);
+
+  /**
+   * Create entries for an identity matrix of a given size.
+   *
+   * @param size The size of the matrix.
+   * @return The identity matrix of size `size`.
+   */
+  static Complex** identity_matrix(unsigned int size);
 };
+
 
 #endif
 

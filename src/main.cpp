@@ -16,7 +16,39 @@ int main(int argc, char** argv) {
   identity3->print(std::cout, "identity3");
   identity3->entries[0][0] = mkcomplex(5.0, 0.0);
   ((*identity3) ^ 2u).print(std::cout, "identity3");
-  //identity3 ^ 0u;
-  //identity3->print(std::cout, "identity3");
+  GeneralLinear *b = new GeneralLinear(4u);
+  b->entries[0][1] = mkcomplex(0.0, 2.0);
+  (*b ^ 2u).print(std::cout, "b ^ 2");
+  // http://www.wolframalpha.com/input/?i=%5B%5B1%2C2i%2C3%2C4i%5D%2C%5B5%2C6i%2C7%2C8i%5D%2C%5B9%2C10i%2C11%2C12i%5D%2C%5B13%2C14i%2C15%2C16i%5D%5D+%5E+2
+  for (unsigned int i = 0; i < 4; i++) {
+    for (unsigned int j = 0; j < 4; j++) {
+      unsigned int val = (1 + (i * 4) + j);
+      if (val % 2 == 0) {
+        b->entries[i][j] = mkcomplex(0.0, (double)val);
+      } else {
+        b->entries[i][j] = mkcomplex((double)val, 0.0);
+      }
+    }
+  }
+  b->print(std::cout, "non trivial example b");
+  (*b ^ 2u).print(std::cout, "b ^ 2");
+
+  GeneralLinear *c = new GeneralLinear(4u);
+  // http://www.wolframalpha.com/input/?i=%5B%5B1%2C2i%2C3%2C4i%5D%2C%5B5%2C6i%2C7%2C8i%5D%2C%5B9%2C10i%2C11%2C12i%5D%2C%5B13%2C14i%2C15%2C16i%5D%5D+*+%5B%5B5%2C6i%2C7%2C8i%5D%2C%5B9%2C10i%2C11%2C12i%5D%2C%5B13%2C14i%2C15%2C16i%5D%2C+%5B1%2C2i%2C3%2C4i%5D%5D+
+  for (unsigned int i = 1; i <= 4; i++) {
+    for (unsigned int j = 0; j < 4; j++) {
+      unsigned int val = (1 + ((i % 4) * 4) + j);
+      if (val % 2 == 0) {
+        c->entries[i - 1][j] = mkcomplex(0.0, (double)val);
+      } else {
+        c->entries[i - 1][j] = mkcomplex((double)val, 0.0);
+      }
+    }
+  }
+  b->print(std::cout, "b");
+  c->print(std::cout, "c");
+
+  ((*b) * (*c)).print(std::cout, "b * c");
+
   return 0;
 }

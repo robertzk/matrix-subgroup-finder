@@ -1,0 +1,3 @@
+#!/bin/sh
+
+clang++ -Wall -O3 src/complex.hpp src/complex.cpp src/main.cpp && mv a.out matrix_subgroup_finder

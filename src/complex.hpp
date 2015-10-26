@@ -8,6 +8,8 @@ struct Complex {
 
 Complex mkcomplex(double re, double im);
 char* strcomplex(Complex c);
+Complex addcomplex(Complex a, Complex b);
+void addcomplex2(Complex &a, Complex b);
 
 #endif
 

@@ -15,3 +15,17 @@ char* strcomplex(Complex c) {
   return buf;
 }
 
+Complex addcomplex(Complex a, Complex b) {
+  return mkcomplex(a.re + b.re, a.im + b.im);
+}
+
+void addcomplex2(Complex &a, Complex b) {
+  a.re = a.re + b.re;
+  a.im = a.im + b.im;
+}
+
+Complex multcomplex(Complex a, Complex b) {
+  return mkcomplex(a.re * b.re - a.im * b.im, a.re * b.im + a.im * b.re);
+}
+
+

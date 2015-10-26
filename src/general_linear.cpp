@@ -58,10 +58,23 @@ GeneralLinear operator*(GeneralLinear a, GeneralLinear b) {
   if (a.size != b.size) {
     throw "Matrix sizes must be equal to multiply.";
   }
+  unsigned int n = a.size;
 
-  Complex **new_entries = GeneralLinear::identity_matrix(a.size);
-  a.entries[0][0] = mkcomplex(0.0, 0.0);
-  return a;
+  Complex **new_entries = GeneralLinear::identity_matrix(n);
+
+  for (unsigned int i = 0; i < n; i++) {
+    for (unsigned int j = 0; j < n; j++) {
+      Complex new_entry = mkcomplex(0.0, 0.0);
+      for (unsigned int k = 0; k < n; k++) {
+        for (unsigned int h = 0; h < n; h++) {
+          addcomplex2(new_entry, mkcomplex(0.0, 0.0)); //multcomplex(
+        }
+      }
+      new_entries[i][j] = new_entry;
+    }
+  }
+
+  return GeneralLinear(n, new_entries);
 }
 
 
@@ -72,10 +85,13 @@ GeneralLinear operator^(GeneralLinear a, unsigned int n) {
   if (n == 0) {
     a.entries = GeneralLinear::identity_matrix(a.size);
     return a;
+  } else if (n == 1) {
+    return a;
+  } else {
+    GeneralLinear *a_ = new GeneralLinear(&a);
+    for (unsigned int i = 0; i < n; i++, a = a * (*a_));
+    return a;
   }
-
-  a.entries[0][0] = mkcomplex(0.0, (double)n);
-  return a;
 }
 
 /**

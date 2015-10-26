@@ -26,3 +26,8 @@
 *.exe
 *.out
 *.app
+
+# Automake files
+autom4te.cache/
+config.status
+stamp-h1
